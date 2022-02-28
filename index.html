@@ -33,6 +33,7 @@
                                     aria-describedby="button-addon2"
                                 />
                                 <button
+                                    onclick="loadPhone()"
                                     class="btn btn-outline-secondary"
                                     type="button"
                                     id="search-button"
@@ -50,134 +51,65 @@
         <section>
             <div class="container">
                 <div>
-                    <div id="products" class="row row-cols-1 row-cols-md-3 g-4">
-                        <div class="col">
-                            <div class="card shadow">
-                                <div class="product_img p-2">
-                                    <img
-                                        src="./21 feb copy.jpg"
-                                        class="card-img-top rounded"
-                                        alt="..."
-                                    />
+                    <div
+                        id="products"
+                        class="row row-cols-1 row-cols-md-3 g-4"
+                    ></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- modol -->
+        <!-- Button trigger modal -->
+        <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+        >
+            Launch static backdrop modal
+        </button>
+
+        <!-- Modal -->
+        <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">
+                            Modal title
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="modal_img">
+                                        <img src="" alt="" />
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">
-                                        <small class="text-muted"
-                                            >Last updated 3 mins ago</small
-                                        >
-                                    </p>
-                                    <p class="card-text">
-                                        This is a longer card with supporting
-                                        text below as a natural lead-in to
-                                        additional content. This content is a
-                                        little bit longer.
-                                    </p>
-                                    <button
-                                        id="details"
-                                        class="btn btn-primary"
-                                    >
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card shadow">
-                                <div class="product_img p-2">
-                                    <img
-                                        src="./21 feb copy.jpg"
-                                        class="card-img-top rounded"
-                                        alt="..."
-                                    />
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">
-                                        <small class="text-muted"
-                                            >Last updated 3 mins ago</small
-                                        >
-                                    </p>
-                                    <p class="card-text">
-                                        This is a longer card with supporting
-                                        text below as a natural lead-in to
-                                        additional content. This content is a
-                                        little bit longer.
-                                    </p>
-                                    <button
-                                        id="details"
-                                        class="btn btn-primary"
-                                    >
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card shadow">
-                                <div class="product_img p-2">
-                                    <img
-                                        src="./21 feb copy.jpg"
-                                        class="card-img-top rounded"
-                                        alt="..."
-                                    />
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">
-                                        <small class="text-muted"
-                                            >Last updated 3 mins ago</small
-                                        >
-                                    </p>
-                                    <p class="card-text">
-                                        This is a longer card with supporting
-                                        text below as a natural lead-in to
-                                        additional content.
-                                    </p>
-                                    <button
-                                        id="details"
-                                        class="btn btn-primary"
-                                    >
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card shadow">
-                                <div class="product_img p-2">
-                                    <img
-                                        src="./21 feb copy.jpg"
-                                        class="card-img-top rounded"
-                                        alt="..."
-                                    />
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">
-                                        <small class="text-muted"
-                                            >Last updated 3 mins ago</small
-                                        >
-                                    </p>
-                                    <p class="card-text">
-                                        This is a longer card with supporting
-                                        text below as a natural lead-in to
-                                        additional content. This content is a
-                                        little bit longer.
-                                    </p>
-                                    <button
-                                        id="details"
-                                        class="btn btn-primary"
-                                    >
-                                        Details
-                                    </button>
+                                <div class="col-md-7">
+                                    <span>apple</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
         <!-- BOOTSTRAP SCRIPT  -->
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
