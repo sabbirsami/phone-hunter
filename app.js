@@ -42,3 +42,35 @@ const getPhone = (phones) => {
         productsContainer.appendChild(div);
     });
 };
+
+// get phone details
+const loadPhoneDetails = (info) => {
+    const url = `https://openapi.programming-hero.com/api/phone/${info}`;
+    fetch(url)
+        .then((res) => res.json())
+        .then((data) => getPhoneDetails(data.data));
+    document.getElementById("modol_section").innerHTML = "";
+};
+const getPhoneDetails = (details) => {
+    console.log(details);
+    document.getElementById("modol_section").innerHTML = `
+        <div class="col-md-5">
+            <div class="m-3">
+                <img class="img-fluid" src="${details.image}" alt="" />
+                </div>
+            </div>
+        <div class="col-md-7">
+            <h2>${details.name}</h2>
+            <small class="text-muted">${details.releaseDate}</small>
+            <p>Brand: <i>${details.brand}</i></p>
+            <p>Chip Set: ${details.mainFeatures.chipSet}</p>
+            <p>Display Size: ${details.mainFeatures.displaySize}</p>
+            <p>Storage: ${details.mainFeatures.storage}</p>
+            <p>Memory: ${details.mainFeatures.memory}</p>
+            <p>Sensors: ${details.mainFeatures.sensors[0]}</p>
+            <p>Others: ${details?.others?.WLAN}</p>
+            </div>
+    
+
+    `;
+};
