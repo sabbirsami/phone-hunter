@@ -19,7 +19,7 @@
             <div class="container">
                 <div class="row">
                     <div class="title pt-5 pb-4">
-                        <h1 class="d-flex justify-content-center">
+                        <h1 class="d-flex justify-content-center text-uppercase">
                             Dream Phones
                         </h1>
                         <div class="search-fild py-2">
@@ -27,14 +27,14 @@
                                 <input
                                     id="search-input"
                                     type="text"
-                                    class="form-control"
+                                    class="form-control rounded-pill m-1"
                                     placeholder="Search..."
                                     aria-label="Recipient's username"
                                     aria-describedby="button-addon2"
                                 />
                                 <button
                                     onclick="loadPhone()"
-                                    class="btn btn-outline-secondary"
+                                    class="btn rounded-pill btn-outline-success m-1"
                                     type="button"
                                     id="search-button"
                                 >
@@ -47,13 +47,22 @@
             </div>
         </header>
 
+        <!-- ERROR MASSAGE  -->
+        <section>
+            <div id="error" class="container d-none">
+                <div class="error_massage d-flex align-items-center  justify-content-center" style="height: 60vh;">
+                    <h1 class="text-secondary">NO RESULTS FOUND</h1>
+                </div>
+            </div>
+        </section>
+
         <!-- PRODUCT SECTION START -->
         <section>
             <div class="container">
                 <div>
                     <div
                         id="products"
-                        class="row row-cols-1 row-cols-md-3 g-4"
+                        class="row row-cols-1 row-cols-md-4 g-4"
                     ></div>
                 </div>
             </div>

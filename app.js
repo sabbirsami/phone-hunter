@@ -4,43 +4,49 @@ const loadPhone = () => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchFild}`;
     fetch(url)
         .then((res) => res.json())
-        .then((data) => getPhone(data.data));
+        .then((data) => getPhone(data.data.slice(0, 20)));
     document.getElementById("products").textContent = "";
 };
-loadPhone();
+
 // get single phone
 const getPhone = (phones) => {
-    phones.forEach((phone) => {
-        // console.log(phone);
-        const productsContainer = document.getElementById("products");
-        const div = document.createElement("div");
-        div.classList.add("col");
-        div.innerHTML = `
-            <div class="card shadow">
-                <div class="product_img p-5">
-                    <img
-                        src="${phone.image}"
-                        class="card-img-top rounded"
-                        alt=""
-                    />
+    if (phones == "") {
+        document.getElementById("error").classList.remove("d-none");
+    } else {
+        document.getElementById("error").classList.add("d-none");
+        phones.forEach((phone) => {
+            const productsContainer = document.getElementById("products");
+            const div = document.createElement("div");
+            div.classList.add("col");
+            div.innerHTML = `
+                <div class="card p-2 shadow" style="border-radius: 15px;">
+                    <div class="product_img p-4">
+                        <img
+                            src="${phone.image}"
+                            class="card-img-top rounded"
+                            alt=""
+                        />
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">${phone.phone_name}</h5>
+                        <p class="card-text text-center">Brand: ${phone.brand}</p>
+                        <div class="d-flex justify-content-center">
+                            <button
+                                onclick="loadPhoneDetails('${phone.slug}')"
+                                type="button"
+                                class="btn d-flex justify-content-center btn-success rounded-pill px-5 py-2"
+                                data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop"
+                                id="details">
+                                Details
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">${phone.phone_name}</h5>
-                    <p class="card-text">Brand: ${phone.brand}</p>
-                    <button
-                        onclick="loadPhoneDetails('${phone.slug}')"
-                        type="button"
-                        class="btn btn-primary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop"
-                        id="details">
-                        Details
-                    </button>
-                </div>
-            </div>
-        `;
-        productsContainer.appendChild(div);
-    });
+            `;
+            productsContainer.appendChild(div);
+        });
+    }
 };
 
 // get phone details
@@ -61,14 +67,26 @@ const getPhoneDetails = (details) => {
             </div>
         <div class="col-md-7">
             <h2>${details.name}</h2>
-            <small class="text-muted">${details.releaseDate}</small>
+            <small class="text-muted ">${
+                details.releaseDate
+                    ? details.releaseDate
+                    : "No release date found"
+            }</small>
             <p>Brand: <i>${details.brand}</i></p>
+            <h5>Main Features</h5>
             <p>Chip Set: ${details.mainFeatures.chipSet}</p>
             <p>Display Size: ${details.mainFeatures.displaySize}</p>
             <p>Storage: ${details.mainFeatures.storage}</p>
             <p>Memory: ${details.mainFeatures.memory}</p>
             <p>Sensors: ${details.mainFeatures.sensors[0]}</p>
-            <p>Others: ${details?.others?.WLAN}</p>
+            <h5>Others</h5>
+            <p>Bluetooth: ${
+                details.others ? details.others.Bluetooth : "No data found"
+            }</p>
+            <p>WLAN: ${
+                details.others ? details.others.WLAN : "No data found"
+            }</p>
+            <p>USB: ${details.others ? details.others.USB : "No data found"}</p>
             </div>
     
 
