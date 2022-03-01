@@ -5,14 +5,15 @@ const loadPhone = () => {
     fetch(url)
         .then((res) => res.json())
         .then((data) => getPhone(data.data.slice(0, 20)));
+    document.getElementById("spinner").classList.remove("d-none");
     document.getElementById("products").textContent = "";
 };
-
 // get single phone
 const getPhone = (phones) => {
     if (phones == "") {
         document.getElementById("error").classList.remove("d-none");
     } else {
+        document.getElementById("spinner").classList.add("d-none");
         document.getElementById("error").classList.add("d-none");
         phones.forEach((phone) => {
             const productsContainer = document.getElementById("products");
@@ -38,7 +39,7 @@ const getPhone = (phones) => {
                                 data-bs-toggle="modal"
                                 data-bs-target="#staticBackdrop"
                                 id="details">
-                                Details
+                                Details<i class="bi bi-arrow-right ps-3"></i>
                             </button>
                         </div>
                     </div>
@@ -49,7 +50,7 @@ const getPhone = (phones) => {
     }
 };
 
-// get phone details
+// loed phone details
 const loadPhoneDetails = (info) => {
     const url = `https://openapi.programming-hero.com/api/phone/${info}`;
     fetch(url)
@@ -57,13 +58,14 @@ const loadPhoneDetails = (info) => {
         .then((data) => getPhoneDetails(data.data));
     document.getElementById("modol_section").innerHTML = "";
 };
+//get phone details
 const getPhoneDetails = (details) => {
     console.log(details);
     document.getElementById("modol_section").innerHTML = `
         <div class="col-md-5">
-            <div class="m-3">
-                <img class="img-fluid" src="${details.image}" alt="" />
-                </div>
+                <img style="width: 100%; height: auto; padding: 50px;" src="${
+                    details.image
+                }" alt="" />
             </div>
         <div class="col-md-7">
             <h2>${details.name}</h2>
@@ -78,7 +80,7 @@ const getPhoneDetails = (details) => {
             <p>Display Size: ${details.mainFeatures.displaySize}</p>
             <p>Storage: ${details.mainFeatures.storage}</p>
             <p>Memory: ${details.mainFeatures.memory}</p>
-            <p>Sensors: ${details.mainFeatures.sensors[0]}</p>
+            <p>Sensors: ${details.mainFeatures.sensors}</p>
             <h5>Others</h5>
             <p>Bluetooth: ${
                 details.others ? details.others.Bluetooth : "No data found"
